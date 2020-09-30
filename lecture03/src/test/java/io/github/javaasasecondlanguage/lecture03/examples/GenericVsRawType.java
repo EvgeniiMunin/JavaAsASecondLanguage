@@ -13,9 +13,12 @@ public class GenericVsRawType {
     public void rawTypesLeadToExceptionsInRuntime() {
         var strings = new ArrayList();
         strings.add(42);
+
+        String s = (String)strings.get(0);
+/*
         assertThrows(java.lang.ClassCastException.class, () -> {
             String s = (String)strings.get(0); // unsafe add leads to exception in runtime (BAD)
-        });
+        });*/
     }
 
     @Test
@@ -27,6 +30,8 @@ public class GenericVsRawType {
     @Test
     public void youCanStillBreakContractIfYouUseRawTypes() {
         var strings = new ArrayList<String>();
+        // strings - ArrayList
+        // no check if add 42 to list of strings. never use raw types - all collections use generics
         unsafeAdd(strings, 42);
         assertThrows(java.lang.ClassCastException.class, () -> {
             String s = strings.get(0); // unsafe add leads to exception in runtime (BAD)

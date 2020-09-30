@@ -11,7 +11,10 @@ public class BoundedGenerics {
         Number number = numbers.get(0);
     }
 
+
     void extendsGeneric(List<? extends Number> numbers){
+        // add Integer - compiler converts it to Number (boxing/ unboxing)
+        // can put only list heritating from Number - double
         //numbers.add(1); // does not compile
         numbers.add(null);//you can only add null
         //Integer number = numbers.get(0);//does not compile
@@ -27,6 +30,8 @@ public class BoundedGenerics {
     }
 
     void wildcardGeneric(List<?> numbers){
+        // <?> wild card to extend types - dont know anything about types
+        // cannot use specific methods or add nothing but Object type
         //numbers.add(1); // does not compile
         numbers.add(null);//you can only add null
         Object o = numbers.get(0);
@@ -34,6 +39,8 @@ public class BoundedGenerics {
 
     @Test
     void boundedGenerics(){
+        // Object <- NUmber <- Integer
+        // define arraylist of Number - but it will not work with Integer, Object - need bounds to extends
         //unboundedGeneric(new ArrayList<Integer>()); // does not compile
         unboundedGeneric(new ArrayList<Number>()); // does not compile
         //unboundedGeneric(new ArrayList<Object>()); // does not compile

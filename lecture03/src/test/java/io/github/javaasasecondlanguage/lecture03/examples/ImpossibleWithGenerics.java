@@ -12,8 +12,8 @@ public class ImpossibleWithGenerics {
 
     @Test
     <T> boolean instanceOf(Object t) {
-        //return t instanceof T; //does not compile
-        //return t.getClass() == T; //does not compile
+        //return t instanceof T; //does not compile - runtime check
+        //return t.getClass() == T; //does not compile - runtime check
         throw new RuntimeException();
     }
 }

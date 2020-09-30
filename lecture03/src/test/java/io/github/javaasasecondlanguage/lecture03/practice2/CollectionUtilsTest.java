@@ -37,4 +37,8 @@ class CollectionUtilsTest {
     void noNullElementIsEqualToAnotherNullElement() {
         assertEquals(Collections.emptySet(), CollectionUtils.intersect(new HashSet<>(Arrays.asList(null, null)), new HashSet<>(Arrays.asList(null, null))));
     }
+    /*
+    void testUsability() {
+        Set<? super Object> intersection = CollectionUtils.intersect()
+    }*/
 }
